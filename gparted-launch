@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# gparted-launcher — GParted drive selector wrapper for Linux systems.
+# gparted-launch — GParted drive selector wrapper for Linux systems.
 # Select one drive; GParted opens on that device only.
 # MIT License 2026 Musqz
 #
