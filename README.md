@@ -20,16 +20,12 @@ One drive, one window, on purpose.
 | `yad` | GTK dialog for drive selection |
 | `lsblk` | Drive detection (part of `util-linux`) |
 
-Install any missing dependency with:
-```bash
-sudo pacman -S gparted yad util-linux
-```
-
 ## Installation
 
 ```bash
-cp gparted-launch ~/bin/
-chmod +x ~/bin/gparted-launch
+chmod +x gparted-launch
+cp gparted-launch /path/to/bin
+
 ```
 
 Optionally add the `.desktop` file to your application menu:
