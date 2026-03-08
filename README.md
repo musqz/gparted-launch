@@ -31,7 +31,7 @@ cp gparted-launch /path/to/bin
 Optionally add the example `.desktop` file to your application menu:
 
 ```bash
-cp gparted-launch.desktop ~/.local/share/applications/
+cp gparted.desktop ~/.local/share/applications/
 ```
 
 ## Usage
