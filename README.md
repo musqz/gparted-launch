@@ -28,7 +28,8 @@ cp gparted-launch /path/to/bin
 
 ```
 
-Optionally add the `.desktop` file to your application menu:
+Optionally add the example `.desktop` file to your application menu:
+
 ```bash
 cp gparted-launch.desktop ~/.local/share/applications/
 ```
@@ -40,7 +41,13 @@ Run from terminal or launch via menu:
 gparted-launch
 ```
 
-A dialog lists all detected drives with name, type, size and model. Select one and click **Launch**. GParted opens directly on that device. To work on a different drive, close GParted and run the launcher again.
+A dialog lists all detected drives with name, type, size and model. 
+
+Select one and click **Launch**. 
+
+GParted opens directly on that device. 
+
+To work on a different drive, close GParted and run the launcher again.
 
 ## License
 
