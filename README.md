@@ -2,7 +2,7 @@
 
 A lightweight GParted wrapper for Linux. (en, pl, es, nl)
 
-![Image](https://github.com/user-attachments/assets/7f2ab13b-392a-4d03-8c2f-a3bce3dc79c6)
+<img src="[https://github.com/user-attachments/assets/761cdef6-b8a6-42d6-a3db-4861074a0886](https://github.com/user-attachments/assets/a4a6e940-b7f0-42c3-9079-a5f1d24c9df8" width="500" />
 
 <img src="https://github.com/user-attachments/assets/761cdef6-b8a6-42d6-a3db-4861074a0886" width="500" />
 
