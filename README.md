@@ -12,7 +12,7 @@ Inspired by the original `gparted_shell` from Puppy Linux, rewritten for modern 
 
 GParted launched directly will scan **all** connected drives at startup. On systems with multiple disks or USB devices this causes a slow and unnecessary probe. This wrapper lets you pick exactly the drive you want before GParted opens — making it faster to start and safer to use, since there is no risk of accidentally operating on the wrong device.
 
-One drive, one window, on purpose.
+One drive, one window, one purpose.
 
 ## Dependencies
 
