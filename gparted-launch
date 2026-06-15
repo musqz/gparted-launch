@@ -8,7 +8,7 @@ set -euo pipefail
 
 # ── translations ─────────────────────────────────────────────────────────────────
 
-case "${LANGUAGE:-$LANG}" in
+case "${LANGUAGE:-${LANG:-}}" in
     nl*)
         TITLE_ERR="GParted starter"
         TITLE_DLG="GParted — schijf selecteren"
@@ -55,6 +55,7 @@ esac
 
 _need() {
     if ! command -v "$1" &>/dev/null; then
+        # shellcheck disable=SC2059  # TEXT_DEP is a trusted constant with %s placeholders
         yad --center --title="$TITLE_ERR" \
             --image=dialog-error \
             --text="$(printf "$TEXT_DEP" "$1" "$2")" \
@@ -83,24 +84,30 @@ done
 
 # ── build drive list ──────────────────────────────────────────────────────────────
 
-mapfile -t DRIVES < <(
-    lsblk -dno NAME,TYPE,SIZE,TRAN,MODEL 2>/dev/null \
-    | awk '$2=="disk" && $1!~/^sr/ {print $1, $3, $4, $5}'
-)
-
-if [[ ${#DRIVES[@]} -eq 0 ]]; then
-    yad --center --title="$TITLE_ERR" \
-        --image=dialog-warning \
-        --text="$TEXT_NODEV" \
-        --button="OK:0" 2>/dev/null
-    exit 1
-fi
+# Extract a key="value" field from one `lsblk -P` line. Using the key=value
+# (pairs) output instead of positional awk fields means multi-word MODEL values
+# (e.g. "Hitachi HUA723020ALA640") and empty TRAN columns are handled correctly
+# without shifting fields.
+_field() {
+    local line="$1" key="$2" val
+    val="${line#*${key}=\"}"
+    val="${val%%\"*}"
+    printf '%s' "$val"
+}
 
 # Build radiolist rows: TRUE/FALSE  LABEL  DEVICE_PATH
 RADIO_LIST=()
 first=true
-for entry in "${DRIVES[@]}"; do
-    read -r NAME SIZE TRAN MODEL <<< "$entry"
+while IFS= read -r line; do
+    [[ -n "$line" ]] || continue
+
+    NAME="$(_field "$line" NAME)"
+    [[ "$(_field "$line" TYPE)" == "disk" ]] || continue
+    [[ "$NAME" == sr* ]] && continue
+
+    SIZE="$(_field "$line" SIZE)"
+    TRAN="$(_field "$line" TRAN)"
+    MODEL="$(_field "$line" MODEL)"
 
     case "$TRAN" in
         usb)  TRANSPORT="USB drive"    ;;
@@ -119,7 +126,15 @@ for entry in "${DRIVES[@]}"; do
     else
         RADIO_LIST+=(FALSE "$LABEL" "/dev/$NAME")
     fi
-done
+done < <(lsblk -dno NAME,TYPE,SIZE,TRAN,MODEL -P 2>/dev/null)
+
+if [[ ${#RADIO_LIST[@]} -eq 0 ]]; then
+    yad --center --title="$TITLE_ERR" \
+        --image=dialog-warning \
+        --text="$TEXT_NODEV" \
+        --button="OK:0" 2>/dev/null
+    exit 1
+fi
 
 # Add "Select All" option at the bottom
 RADIO_LIST+=(FALSE "$TEXT_ALL_DRIVES" "ALL_DRIVES")
@@ -146,7 +161,7 @@ CHOICE=$(
         "${RADIO_LIST[@]}" 2>/dev/null
 ) || exit 0
 
-CHOICE="$(grep -v '^$' <<< "$CHOICE" | head -1)"
+CHOICE="$(grep -v '^$' <<< "$CHOICE" | head -1 || true)"
 
 [[ -z "$CHOICE" ]] && exit 0
 
