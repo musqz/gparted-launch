@@ -1,5 +1,8 @@
 # gparted-launch 
 
+[![Release](https://img.shields.io/github/v/release/musqz/gparted-launch)](https://github.com/musqz/gparted-launch/releases/latest)
+[![License: MIT](https://img.shields.io/github/license/musqz/gparted-launch)](LICENSE)
+
 A lightweight GParted wrapper for Linux. (en, pl, es, nl)
 
 <img src="https://github.com/user-attachments/assets/a4a6e940-b7f0-42c3-9079-a5f1d24c9df8" width="500" />
