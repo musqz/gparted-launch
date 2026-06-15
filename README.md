@@ -21,6 +21,14 @@ One drive, one window, one purpose.
 | `gparted` | The partition editor |
 | `yad` | GTK dialog for drive selection |
 | `lsblk` | Drive detection (part of `util-linux`) |
+| `xhost` | **Wayland only** — lets the root GParted reach the display (`xorg-xhost`) |
+
+> **How privilege escalation works:** the launcher runs `gparted` as your normal user
+> and lets GParted's own launcher (`/usr/bin/gparted`) handle the rest — it raises the
+> polkit password prompt via `pkexec`, and on a Wayland session it temporarily grants the
+> root user access to the X server (`xhost +SI:localuser:root`, revoked on exit) so GParted
+> can display through XWayland. Install `xorg-xhost` for the Wayland case. On X11 nothing
+> extra is needed.
 
 ### Installation
 

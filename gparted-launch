@@ -152,8 +152,14 @@ CHOICE="$(grep -v '^$' <<< "$CHOICE" | head -1)"
 
 # ── launch ────────────────────────────────────────────────────────────────────────
 
+# Run GParted as the normal user and let its own launcher (/usr/bin/gparted)
+# perform the privilege escalation. That launcher raises the polkit password
+# prompt via pkexec and, on a Wayland session, temporarily grants the root user
+# access to the X server with `xhost +SI:localuser:root` (revoking it on exit).
+# This works on both X11 and Wayland and keeps the wrapper minimal — we only
+# pick the device, GParted handles root and display access.
 if [[ "$CHOICE" == "ALL_DRIVES" ]]; then
-    pkexec env DISPLAY="$DISPLAY" XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}" gparted
+    exec gparted
 else
-    pkexec env DISPLAY="$DISPLAY" XAUTHORITY="${XAUTHORITY:-$HOME/.Xauthority}" gparted "$CHOICE"
+    exec gparted "$CHOICE"
 fi
