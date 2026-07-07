@@ -88,9 +88,17 @@ done
 # (pairs) output instead of positional awk fields means multi-word MODEL values
 # (e.g. "Hitachi HUA723020ALA640") and empty TRAN columns are handled correctly
 # without shifting fields.
+#
+# A leading space is prefixed to $line so the key="  match is anchored to a
+# field boundary (line start or preceding space) — this stops one field's
+# value from being mistaken for a different field's key=" marker.
 _field() {
-    local line="$1" key="$2" val
-    val="${line#*${key}=\"}"
+    local line=" $1" key="$2" val
+    case "$line" in
+        *" ${key}=\""*) ;;
+        *) printf ''; return ;;
+    esac
+    val="${line#*" ${key}=\""}"
     val="${val%%\"*}"
     printf '%s' "$val"
 }
