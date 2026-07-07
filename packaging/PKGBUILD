@@ -1,6 +1,6 @@
 # Maintainer: Musqz <linuxbirdtweets@duck.com>
 pkgname=gparted-launch
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Select a drive before GParted opens, instead of scanning every connected device"
 arch=('any')
