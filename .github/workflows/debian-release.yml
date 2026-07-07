@@ -18,7 +18,7 @@ jobs:
       - name: Install build dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq debhelper dpkg-dev
+          sudo apt-get install -y -qq build-essential debhelper dpkg-dev
 
       - name: Set changelog version from tag
         run: |
