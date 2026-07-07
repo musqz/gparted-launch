@@ -1,0 +1,2 @@
+gparted-launch usr/bin
+gparted-launch.desktop usr/share/applications

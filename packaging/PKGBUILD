@@ -1,0 +1,19 @@
+# Maintainer: Musqz <linuxbirdtweets@duck.com>
+pkgname=gparted-launch
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Select a drive before GParted opens, instead of scanning every connected device"
+arch=('any')
+url="https://github.com/musqz/gparted-launch"
+license=('MIT')
+depends=('gparted' 'yad' 'util-linux')
+optdepends=('xorg-xhost: display access for root GParted on Wayland')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/gparted-launch/archive/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    cd "$pkgname-$pkgver"
+    install -Dm755 gparted-launch "$pkgdir/usr/bin/gparted-launch"
+    install -Dm644 gparted-launch.desktop "$pkgdir/usr/share/applications/gparted-launch.desktop"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -35,18 +35,25 @@ One drive, one window, one purpose.
 
 ### Installation
 
-1. **Make the script executable and install it to a directory in your `$PATH`:**
+**Debian / Ubuntu:** download the `.deb` from the [latest release](https://github.com/musqz/gparted-launch/releases/latest) and install it:
+```bash
+sudo apt install ./gparted-launch_*.deb
+```
+
+**Manual install (any distro):**
+
+1. Make the script executable and install it to a directory in your `$PATH`:
    ```bash
    chmod +x gparted-launch
-   sudo cp gparted-launch ~/.local/bin/
+   cp gparted-launch ~/.local/bin/
    ```
    *(Replace `~/.local/bin/` with your preferred location, e.g., `~/bin/` if it exists or `/usr/local/bin/`.)*
 
 2. **(Optional) Install the desktop shortcut:**
-   - Edit `gparted.desktop` and update the `Exec=` line to match the path where you installed `gparted-launch`.
+   - Edit `gparted-launch.desktop` and update the `Exec=` line to match the path where you installed `gparted-launch`.
    - Copy the file to your applications directory:
      ```bash
-     cp gparted.desktop ~/.local/share/applications/
+     cp gparted-launch.desktop ~/.local/share/applications/
      ```
 
 ## Usage

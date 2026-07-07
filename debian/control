@@ -1,0 +1,16 @@
+Source: gparted-launch
+Section: admin
+Priority: optional
+Maintainer: Musqz <linuxbirdtweets@duck.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/musqz/gparted-launch
+
+Package: gparted-launch
+Architecture: all
+Depends: ${misc:Depends}, gparted, yad, util-linux
+Recommends: xorg-xhost
+Description: Select a drive before GParted opens
+ A lightweight GParted wrapper. GParted launched directly scans every
+ connected block device at startup; this wrapper lets you pick the
+ drive first, so GParted opens directly on that device only.

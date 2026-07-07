@@ -1,1 +1,13 @@
 CLAUDE.md
+
+# debian packaging build artifacts (dpkg-buildpackage output)
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+debian/gparted-launch/
+
+# makepkg build artifacts
+packaging/pkg/
+packaging/src/
+packaging/*.pkg.tar.*
