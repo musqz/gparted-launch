@@ -1,0 +1,42 @@
+name: Build Debian package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq debhelper dpkg-dev
+
+      - name: Set changelog version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          cat > debian/changelog <<EOF
+          gparted-launch (${VERSION}) unstable; urgency=medium
+
+            * Release ${VERSION}.
+
+           -- Musqz <linuxbirdtweets@duck.com>  $(date -R)
+          EOF
+
+      - name: Build .deb
+        run: |
+          dpkg-buildpackage -us -uc -b
+          mv ../gparted-launch_*.deb .
+
+      - name: Attach to release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: gparted-launch_*.deb
