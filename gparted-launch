@@ -6,6 +6,12 @@
 
 set -euo pipefail
 
+# Desktop-menu sessions (unlike login shells) often start with a minimal PATH
+# that excludes the sbin dirs. Debian/MX Linux installs gparted to
+# /usr/sbin/gparted, so `command -v gparted` below would otherwise fail only
+# when launched from the menu, not from a terminal.
+export PATH="$PATH:/usr/local/sbin:/usr/sbin:/sbin:$HOME/.local/bin"
+
 # ── translations ─────────────────────────────────────────────────────────────────
 
 case "${LANGUAGE:-${LANG:-}}" in
