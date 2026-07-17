@@ -153,7 +153,6 @@ CHOICE=$(
     yad --title="$TITLE_DLG" \
         --window-icon="$GPICON" \
         --image="$GPICON" \
-        --image-on-top \
         --text="$TEXT_DLG" \
         --list \
         --radiolist \
