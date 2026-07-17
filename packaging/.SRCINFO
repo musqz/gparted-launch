@@ -10,6 +10,6 @@ pkgbase = gparted-launch
 	depends = util-linux
 	optdepends = xorg-xhost: display access for root GParted on Wayland
 	source = gparted-launch-1.1.2.tar.gz::https://github.com/musqz/gparted-launch/archive/v1.1.2.tar.gz
-	sha256sums = SKIP
+	sha256sums = 6a42e1cd60a61bf9dada386da488f47be686e52587c392ab28dac49417f7641c
 
 pkgname = gparted-launch

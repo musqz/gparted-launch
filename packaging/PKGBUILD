@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gparted' 'yad' 'util-linux')
 optdepends=('xorg-xhost: display access for root GParted on Wayland')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/gparted-launch/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6a42e1cd60a61bf9dada386da488f47be686e52587c392ab28dac49417f7641c')
 
 package() {
     cd "$pkgname-$pkgver"
