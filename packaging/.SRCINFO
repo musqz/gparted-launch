@@ -1,6 +1,6 @@
 pkgbase = gparted-launch
 	pkgdesc = Select a drive before GParted opens, instead of scanning every connected device
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/musqz/gparted-launch
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gparted-launch
 	depends = yad
 	depends = util-linux
 	optdepends = xorg-xhost: display access for root GParted on Wayland
-	source = gparted-launch-1.1.1.tar.gz::https://github.com/musqz/gparted-launch/archive/v1.1.1.tar.gz
+	source = gparted-launch-1.1.2.tar.gz::https://github.com/musqz/gparted-launch/archive/v1.1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = gparted-launch
