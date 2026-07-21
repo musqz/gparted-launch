@@ -1,4 +1,5 @@
 CLAUDE.md
+claude.md
 
 # debian packaging build artifacts (dpkg-buildpackage output)
 debian/.debhelper/
@@ -11,3 +12,4 @@ debian/gparted-launch/
 packaging/pkg/
 packaging/src/
 packaging/*.pkg.tar.*
+.bashtask
