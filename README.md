@@ -1,7 +1,7 @@
 # gparted-launch 
 
-[![Release](https://img.shields.io/github/v/release/musqz/gparted-launch)](https://github.com/musqz/gparted-launch/releases/latest)
-[![License: MIT](https://img.shields.io/github/license/musqz/gparted-launch)](LICENSE)
+[![Release](https://img.shields.io/gitea/v/release/linux-bird/gparted-launch?gitea_url=https://codeberg.org)](https://codeberg.org/linux-bird/gparted-launch/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 A lightweight GParted wrapper for Linux. (en, pl, es, nl)
 
@@ -35,9 +35,15 @@ One drive, one window, one purpose.
 
 ### Installation
 
-**Debian / Ubuntu:** download the `.deb` from the [latest release](https://github.com/musqz/gparted-launch/releases/latest) and install it:
+**Debian / Ubuntu:** a `.deb` is published up to [v1.1.2](https://codeberg.org/linux-bird/gparted-launch/releases/tag/v1.1.2). Newer versions are not packaged.
 ```bash
 sudo apt install ./gparted-launch_*.deb
+```
+To build one from a newer checkout, set the version in `debian/changelog`, then run from the repo root:
+```bash
+sudo apt install build-essential debhelper dpkg-dev
+dpkg-buildpackage -us -uc -b
+sudo apt install ../gparted-launch_*.deb
 ```
 
 **Manual install (any distro):**
