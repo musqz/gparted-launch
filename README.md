@@ -1,3 +1,6 @@
+> **This repository has moved to Codeberg: https://codeberg.org/linux-bird/gparted-launch**
+> It is archived here. Please use Codeberg for issues and pull requests.
+
 # gparted-launch 
 
 [![Release](https://img.shields.io/github/v/release/musqz/gparted-launch)](https://github.com/musqz/gparted-launch/releases/latest)
